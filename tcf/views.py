@@ -100,3 +100,7 @@ def forgot_password_view(request):
 def verificationotp(request):
     return render(request, 'authentification/otp_code.html')
 
+
+def admin_view(request):
+    return render(request, 'configurations/configurations.html')
+

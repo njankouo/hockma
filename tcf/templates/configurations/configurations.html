@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOKMA Admin | Centre de Contrôle</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .status-pill { @apply px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased overflow-x-hidden">
+
+    <div id="overlay" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[140] hidden lg:hidden transition-opacity"></div>
+
+    <div class="flex min-h-screen relative">
+        
+        <aside id="sidebar" class="fixed lg:sticky top-0 left-0 w-80 bg-white h-screen border-r border-slate-100 flex flex-col p-8 z-[150] transition-transform duration-300 -translate-x-full lg:translate-x-0">
+            <button id="closeSidebar" class="lg:hidden absolute top-8 right-8 text-slate-400 hover:text-red-600 transition-colors">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+
+            <div class="flex flex-col mb-12">
+                <span class="text-3xl font-black tracking-tighter italic">HOKMA<span class="text-red-600">ADMIN</span></span>
+                <div class="h-1.5 w-10 bg-red-600 rounded-full mt-1"></div>
+            </div>
+            
+            <nav class="flex-1 space-y-2 overflow-y-auto no-scrollbar">
+                <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Navigation principale</p>
+                <a href="#stats" class="flex items-center gap-4 p-4 bg-slate-900 text-white rounded-2xl font-bold shadow-lg shadow-slate-900/20">
+                    <i class="fas fa-chart-line"></i> Vue d'ensemble
+                </a>
+                <a href="#users" class="flex items-center gap-4 p-4 text-slate-500 hover:bg-slate-50 rounded-2xl font-bold transition-all">
+                    <i class="fas fa-user-group"></i> Utilisateurs
+                </a>
+                <a href="#tests" class="flex items-center gap-4 p-4 text-slate-500 hover:bg-slate-50 rounded-2xl font-bold transition-all">
+                    <i class="fas fa-file-signature"></i> Tests & Corrections
+                </a>
+                <a href="#payments" class="flex items-center gap-4 p-4 text-slate-500 hover:bg-slate-50 rounded-2xl font-bold transition-all">
+                    <i class="fas fa-wallet"></i> Flux Financiers
+                </a>
+            </nav>
+
+            <div class="mt-auto bg-slate-900 p-6 rounded-[32px] text-white">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 bg-red-600 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/20">
+                        <i class="fas fa-shield-halved text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs font-black italic">HOKMA SECURITY</p>
+                        <p class="text-[10px] text-slate-400 font-bold uppercase">Admin Session 2026</p>
+                    </div>
+                </div>
+                <button class="w-full py-3 bg-white/10 hover:bg-red-600 text-white rounded-xl font-bold text-xs transition-all">Déconnexion</button>
+            </div>
+        </aside>
+
+        <main class="flex-1 min-h-screen pb-12 px-6 lg:px-12 pt-8 w-full">
+            
+            <div class="lg:hidden flex justify-between items-center mb-8">
+                <button id="openSidebar" class="w-12 h-12 bg-white rounded-2xl shadow-sm border border-slate-100 flex items-center justify-center text-slate-900">
+                    <i class="fas fa-bars-staggered"></i>
+                </button>
+                <span class="text-xl font-black italic">HOKMA<span class="text-red-600">ADMIN</span></span>
+            </div>
+
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
+                <div>
+                    <h1 class="text-3xl lg:text-4xl font-black text-slate-900 tracking-tight">Console de Gestion</h1>
+                    <p class="text-slate-500 font-bold mt-1">Surveillez les performances et les flux de la plateforme.</p>
+                </div>
+                <div class="flex gap-4">
+                    <div class="bg-white px-6 py-3 rounded-2xl shadow-sm border border-slate-100">
+                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">Status Serveur</p>
+                        <p class="text-sm font-black text-emerald-500 flex items-center gap-2">
+                            <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span> OPTIMAL
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="stats" class="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div class="bg-white p-6 rounded-[32px] border border-slate-100 shadow-sm">
+                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">Utilisateurs</p>
+                    <p class="text-3xl font-black text-slate-900">2,543</p>
+                </div>
+                <div class="bg-white p-6 rounded-[32px] border border-slate-100 shadow-sm">
+                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">Corrections IA</p>
+                    <p class="text-3xl font-black text-slate-900">892</p>
+                </div>
+                <div class="bg-white p-6 rounded-[32px] border border-slate-100 shadow-sm">
+                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">Revenus (MTD)</p>
+                    <p class="text-3xl font-black text-red-600">14.2k€</p>
+                </div>
+                <div class="bg-white p-6 rounded-[32px] border border-slate-100 shadow-sm">
+                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">Taux de Réussite</p>
+                    <p class="text-3xl font-black text-slate-900">94%</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-[40px] border border-slate-100 shadow-xl overflow-hidden">
+                <div class="flex border-b border-slate-50 px-8 bg-slate-50/30">
+                    <button class="px-6 py-6 border-b-4 border-red-600 text-red-600 font-black text-xs uppercase tracking-widest">Activités Récentes</button>
+                    <button class="px-6 py-6 border-b-4 border-transparent text-slate-400 font-black text-xs uppercase tracking-widest hover:text-slate-900 transition-all">Paiements en attente</button>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead>
+                            <tr class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] border-b border-slate-50">
+                                <th class="p-8">Utilisateur</th>
+                                <th class="p-8">Service / Test</th>
+                                <th class="p-8">Correction</th>
+                                <th class="p-8">Paiement</th>
+                                <th class="p-8 text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-50">
+                            <tr class="hover:bg-slate-50/80 transition-all">
+                                <td class="p-8">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center text-white text-xs font-bold">AK</div>
+                                        <div>
+                                            <p class="text-sm font-black text-slate-900 leading-none mb-1">Amadou Koné</p>
+                                            <p class="text-[10px] font-bold text-slate-400 uppercase">Côte d'Ivoire</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="p-8 font-bold text-sm text-slate-600 italic">TCF Expression Orale</td>
+                                <td class="p-8">
+                                    <span class="bg-emerald-50 text-emerald-600 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider">Corrigé (IA)</span>
+                                </td>
+                                <td class="p-8">
+                                    <span class="bg-slate-900 text-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider">Payé 45€</span>
+                                </td>
+                                <td class="p-8 text-right">
+                                    <button class="w-10 h-10 rounded-xl bg-slate-100 text-slate-400 hover:bg-red-600 hover:text-white transition-all"><i class="fas fa-eye"></i></button>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/80 transition-all">
+                                <td class="p-8">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-xl bg-red-100 flex items-center justify-center text-red-600 text-xs font-bold">ML</div>
+                                        <div>
+                                            <p class="text-sm font-black text-slate-900 leading-none mb-1">Marie Lefebvre</p>
+                                            <p class="text-[10px] font-bold text-slate-400 uppercase">France</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="p-8 font-bold text-sm text-slate-600 italic">Simul. Section B</td>
+                                <td class="p-8">
+                                    <span class="bg-orange-50 text-orange-600 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider animate-pulse">En attente</span>
+                                </td>
+                                <td class="p-8">
+                                    <span class="bg-red-50 text-red-600 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider italic">Non Payé</span>
+                                </td>
+                                <td class="p-8 text-right">
+                                    <button class="w-10 h-10 rounded-xl bg-slate-100 text-slate-400 hover:bg-red-600 hover:text-white transition-all"><i class="fas fa-eye"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    
+
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const openBtn = document.getElementById('openSidebar');
+        const closeBtn = document.getElementById('closeSidebar');
+        const overlay = document.getElementById('overlay');
+
+        const toggleSidebar = () => {
+            sidebar.classList.toggle('-translate-x-full');
+            overlay.classList.toggle('hidden');
+            document.body.classList.toggle('overflow-hidden');
+        };
+
+        if(openBtn) openBtn.addEventListener('click', toggleSidebar);
+        if(closeBtn) closeBtn.addEventListener('click', toggleSidebar);
+        if(overlay) overlay.addEventListener('click', toggleSidebar);
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1024) {
+                sidebar.classList.remove('-translate-x-full');
+                overlay.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+            }
+        });
+    </script>
+</body>
+</html>

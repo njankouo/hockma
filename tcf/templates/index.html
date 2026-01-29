@@ -1,13 +1,35 @@
 <!DOCTYPE html>
 <html lang="fr" class="scroll-smooth">
 <head>
+      {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HOKMA TCF : La plateforme leader pour réussir votre TCF/TEF Canada. Synergie entre IA générative et coaching expert pour viser le NCLC 10 en toute sérénité.">
+    <meta name="keywords" content="TCF Canada, TEF Canada, NCLC 10, Immigration Canada, Entrée Express, HOKMA, Préparation TCF, IA Français, Test de langue">
+    <meta name="author" content="HOKMA IA">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.hokma-ia.ca/">
+    <meta property="og:title" content="HOKMA TCF | L'Excellence pour votre Immigration au Canada">
+    <meta property="og:description" content="Atteignez le NCLC 10 grâce à notre simulateur vocal IA et nos packs PDF interactifs. Inscriptions ouvertes pour la session Février 2026.">
+    <meta property="og:image" content="{% static 'logo.jpeg' %}">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.hokma-ia.ca/">
+    <meta property="twitter:title" content="HOKMA TCF | Visez le NCLC 10 avec l'IA">
+    <meta property="twitter:description" content="Préparez votre TCF Canada avec une technologie de pointe. Simulateur vocal en temps réel aligné sur les critères IRCC.">
+    <meta property="twitter:image" content="{% static 'logo.jpeg' %}">
+
+    <link rel="icon" type="image/png" href="{% static 'logo.jpeg' %}">
+    <link rel="apple-touch-icon" href="{% static 'logo.jpeg' %}">
+    
+    <meta name="theme-color" content="#dc2626">
     <title>HOKMA TCF | L'Excellence pour le Canada</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    {% load static %}
+  
 
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
@@ -28,42 +50,169 @@
 </head>
 <body class="bg-[#fcfcfc] text-slate-900">
 
- <nav class="fixed top-0 w-full z-[1000] glass backdrop-blur-xl border-b border-white/10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 lg:h-20 flex justify-between items-center">
+<nav id="main-nav" class="fixed top-0 w-full z-[1000] transition-all duration-500 glass backdrop-blur-xl border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 lg:h-24 flex justify-between items-center">
         
-        <div class="flex items-center gap-4 group cursor-pointer">
-            <div class="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-2xl flex items-center justify-center shadow-2xl shadow-red-500/30 group-hover:scale-105 transition-all duration-500 overflow-hidden ring-1 ring-black/5">
-                <img src="{% static 'logo.jpeg' %}" alt="Logo HOKMA" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+        <div class="flex items-center gap-3 group cursor-pointer">
+            <div class="w-10 h-10 sm:w-14 sm:h-14 bg-white rounded-xl sm:rounded-2xl flex items-center justify-center shadow-xl shadow-red-500/10 overflow-hidden ring-1 ring-black/5">
+                <img src="{% static 'logo.jpeg' %}" alt="Logo HOKMA" class="w-full h-full object-cover">
             </div>
-
             <div class="flex flex-col justify-center">
-                <span class="font-black text-2xl sm:text-3xl tracking-tighter leading-none uppercase bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text text-transparent">
-                    HOKMA<span class="text-red-600 italic font-black ml-0.5">TCF</span>
+                <span class="font-black text-xl sm:text-3xl tracking-tighter leading-none uppercase">
+                    HOKMA<span class="text-red-600 italic ml-0.5">TCF</span>
                 </span>
-                <span class="text-[10px] font-bold tracking-[0.2em] text-slate-500 uppercase mt-1">Excellence Linguistique</span>
             </div>
         </div>
 
-        <div class="hidden lg:flex items-center gap-8">
-            <div class="flex items-center gap-10 font-bold text-xs uppercase tracking-[0.2em] text-slate-600 mr-4">
-                <a href="#packs" class="hover:text-red-600 transition-colors py-2">Programmes</a>
-                <a href="#features" class="hover:text-red-600 transition-colors py-2">Méthode</a>
-                <a href="#faq" class="hover:text-red-600 transition-colors py-2">Support</a>
+        <div class="hidden lg:flex items-center gap-10 font-bold text-[11px] uppercase tracking-[0.2em] text-slate-600">
+            
+            <a href="/" class="hover:text-red-600 transition-colors">Accueil</a>
+
+            <div class="relative group py-4">
+                <button class="flex items-center gap-2 hover:text-red-600 transition-colors uppercase">
+                    Programmes <i class="fas fa-chevron-down text-[8px] group-hover:rotate-180 transition-transform duration-300"></i>
+                </button>
+                <div class="absolute top-full left-1/2 -translate-x-1/2 w-[400px] bg-white rounded-[32px] shadow-2xl border border-slate-100 p-6 opacity-0 invisible translate-y-4 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300">
+                    <div class="grid gap-2">
+                       <a href="#packs" class="flex items-center gap-4 p-4 hover:bg-emerald-50 rounded-2xl transition-all group/item">
+    <div class="w-10 h-10 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center group-hover/item:bg-emerald-600 group-hover/item:text-white transition-all">
+        <i class="fas fa-gem"></i>
+    </div>
+    <div>
+        <p class="text-slate-900 text-sm font-black normal-case tracking-normal">Pack Émeraude</p>
+        <p class="text-[10px] text-slate-500 normal-case tracking-normal">Essentiels EE & EO Corrigés</p>
+    </div>
+</a>
+
+<a href="#packs" class="flex items-center gap-4 p-4 hover:bg-red-50 rounded-2xl transition-all group/item">
+    <div class="w-10 h-10 bg-red-100 text-red-600 rounded-xl flex items-center justify-center group-hover/item:bg-red-600 group-hover/item:text-white transition-all">
+        <i class="fas fa-fire"></i>
+    </div>
+    <div>
+        <p class="text-slate-900 text-sm font-black normal-case tracking-normal">Pack Rubis</p>
+        <p class="text-[10px] text-slate-500 normal-case tracking-normal">Compendium complet 6 mois</p>
+    </div>
+</a>
+
+<a href="#packs" class="flex items-center gap-4 p-4 hover:bg-blue-50 rounded-2xl transition-all group/item">
+    <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center group-hover/item:bg-blue-600 group-hover/item:text-white transition-all">
+        <i class="fas fa-layer-group"></i>
+    </div>
+    <div>
+        <p class="text-slate-900 text-sm font-black normal-case tracking-normal">Pack Saphir</p>
+        <p class="text-[10px] text-slate-500 normal-case tracking-normal">Toutes épreuves + Audios</p>
+    </div>
+</a>
+
+<a href="#packs" class="flex items-center gap-4 p-4 hover:bg-slate-100 rounded-2xl transition-all group/item border border-dashed border-slate-200">
+    <div class="w-10 h-10 bg-slate-900 text-white rounded-xl flex items-center justify-center group-hover/item:scale-110 transition-all">
+        <i class="fas fa-crown"></i>
+    </div>
+    <div>
+        <p class="text-slate-900 text-sm font-black normal-case tracking-normal">Pack Diamant</p>
+        <p class="text-[10px] text-slate-500 normal-case tracking-normal">Accès VIP + Coaching NCLC 10</p>
+    </div>
+</a>
+
+<a href="#ai" class="flex items-center gap-4 p-4 hover:bg-slate-50 rounded-2xl transition-all group/item">
+    <div class="w-10 h-10 bg-slate-100 text-slate-900 rounded-xl flex items-center justify-center">
+        <i class="fas fa-robot"></i>
+    </div>
+    <div>
+        <p class="text-slate-900 text-sm font-black normal-case tracking-normal">Simulateur Oral IA</p>
+        <p class="text-[10px] text-slate-500 normal-case tracking-normal">Entraînement illimité 24/7</p>
+    </div>
+</a>
+                    </div>
+                </div>
             </div>
-            <a href="{% url 'login' %}" class="bg-slate-900 text-white px-7 py-3 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-red-600 shadow-xl transition-all duration-300 hover:-translate-y-0.5">
-                Espace Pro
-            </a>
+
+            <a href="#success" class="hover:text-red-600 transition-colors">Réussites</a>
+            <a href="{% url 'login' %}" class="bg-slate-900 text-white px-8 py-4 rounded-2xl font-black shadow-xl hover:bg-red-600 transition-all">Connexion</a>
         </div>
 
-        <button id="nav-trigger" class="lg:hidden flex items-center gap-2 bg-slate-50 p-2 rounded-xl border border-slate-200 shadow-sm">
-            <div class="w-10 h-10 bg-slate-900 rounded-lg flex flex-col items-center justify-center gap-1">
-                <span class="w-5 h-0.5 bg-white rounded"></span>
-                <span class="w-5 h-0.5 bg-white rounded"></span>
-                <span class="w-5 h-0.5 bg-white rounded"></span>
-            </div>
+        <button id="mobile-menu-open" class="lg:hidden w-11 h-11 flex items-center justify-center bg-slate-50 rounded-xl border border-slate-100">
+            <i class="fas fa-bars-staggered text-slate-900"></i>
         </button>
     </div>
 </nav>
+
+<div id="mobile-drawer" class="fixed inset-0 z-[2000] invisible">
+    <div id="drawer-overlay" class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm opacity-0 transition-opacity duration-500"></div>
+    <div id="drawer-content" class="absolute top-0 right-0 w-[85%] max-w-xs h-full bg-white shadow-2xl translate-x-full transition-transform duration-500 p-8 flex flex-col">
+        <div class="flex justify-between items-center mb-10">
+            <span class="font-black text-2xl italic">HOKMA<span class="text-red-600">TCF</span></span>
+            <button id="mobile-menu-close" class="text-slate-400 text-xl"><i class="fas fa-times"></i></button>
+        </div>
+        <nav class="space-y-6">
+            <a href="/" class="flex items-center gap-4 font-black text-slate-900 uppercase tracking-tighter text-lg border-b border-slate-50 pb-4"><i class="fas fa-home text-red-600"></i> Accueil</a>
+            <div class="space-y-4 pt-2">
+                <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Nos Programmes</p>
+                <a href="#packs" class="flex items-center gap-4 font-bold text-slate-600"><i class="fas fa-crown"></i> Pack Émeraude</a>
+                <a href="#ai" class="flex items-center gap-4 font-bold text-slate-600"><i class="fas fa-robot"></i> Oral Master IA</a>
+            </div>
+        </nav>
+        <div class="mt-auto">
+            <a href="{% url 'login' %}" class="w-full py-4 bg-slate-900 text-white rounded-2xl flex items-center justify-center font-black gap-3 shadow-xl">
+                Connexion
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="lg:hidden fixed bottom-6 left-1/2 -translate-x-1/2 w-[92%] max-w-md z-[1000]">
+    <div class="bg-slate-900/95 backdrop-blur-xl border border-white/10 rounded-[28px] p-2 shadow-2xl flex justify-between items-center px-6 py-3">
+        <a href="/" class="flex flex-col items-center gap-1 text-white">
+            <i class="fas fa-home text-lg"></i>
+            <span class="text-[8px] font-black uppercase tracking-widest">Accueil</span>
+        </a>
+        <a href="#packs" class="flex flex-col items-center gap-1 text-slate-400">
+            <i class="fas fa-box-open text-lg"></i>
+            <span class="text-[8px] font-black uppercase tracking-widest">Packs</span>
+        </a>
+        <a href="#ai" class="flex flex-col items-center gap-1">
+            <div class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center -mt-10 border-4 border-white shadow-lg shadow-red-500/40">
+                <i class="fas fa-robot text-white"></i>
+            </div>
+            <span class="text-[8px] font-black uppercase tracking-widest text-slate-400">Oral IA</span>
+        </a>
+        <a href="#success" class="flex flex-col items-center gap-1 text-slate-400">
+            <i class="fas fa-trophy text-lg"></i>
+            <span class="text-[8px] font-black uppercase tracking-widest">Réussite</span>
+        </a>
+        <a href="{% url 'login' %}" class="flex flex-col items-center gap-1 text-slate-400">
+            <i class="fas fa-user text-lg"></i>
+            <span class="text-[8px] font-black uppercase tracking-widest">Login</span>
+        </a>
+    </div>
+</div>
+
+<script>
+    const openBtn = document.getElementById('mobile-menu-open');
+    const closeBtn = document.getElementById('mobile-menu-close');
+    const drawer = document.getElementById('mobile-drawer');
+    const overlay = document.getElementById('drawer-overlay');
+    const content = document.getElementById('drawer-content');
+
+    const toggleDrawer = () => {
+        const isHidden = drawer.classList.contains('invisible');
+        if(isHidden) {
+            drawer.classList.remove('invisible');
+            setTimeout(() => {
+                overlay.classList.add('opacity-100');
+                content.classList.remove('translate-x-full');
+            }, 10);
+        } else {
+            overlay.classList.remove('opacity-100');
+            content.classList.add('translate-x-full');
+            setTimeout(() => drawer.classList.add('invisible'), 500);
+        }
+    };
+
+    openBtn.addEventListener('click', toggleDrawer);
+    closeBtn.addEventListener('click', toggleDrawer);
+    overlay.addEventListener('click', toggleDrawer);
+</script>
 {%block content%}
     <!-- Mobile Menu Overlay -->
     <div id="nav-overlay" class="fixed inset-0 bg-gradient-to-b from-white/95 via-white/90 to-slate-50/90 backdrop-blur-2xl z-[999] translate-y-[-100%] opacity-0 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] flex flex-col justify-center px-6 sm:px-10">
@@ -83,84 +232,132 @@
             <a href="#" class="w-16 h-16 bg-white/80 backdrop-blur-xl border border-slate-200 rounded-3xl flex items-center justify-center text-2xl shadow-2xl hover:shadow-white/50 transition-all duration-300 hover:scale-110"><i class="fab fa-instagram text-pink-500"></i></a>
         </div>
     </div>
-
-<header class="relative min-h-[90vh] flex items-center pt-16 pb-16 bg-white overflow-hidden font-sans">
+<br/>
+<header class="relative min-h-[90vh] flex items-center pt-20 pb-16 bg-white overflow-hidden font-sans">
     <div class="absolute inset-0 bg-[radial-gradient(circle_at_80%_50%,rgba(220,38,38,0.03)_0%,rgba(255,255,255,1)_70%)] -z-20"></div>
 
     <div class="max-w-7xl mx-auto px-6 w-full">
         <div class="grid lg:grid-cols-12 gap-12 items-center">
             
             <div class="lg:col-span-7 space-y-8">
-                <div class="inline-flex items-center gap-2 bg-red-50 border border-red-100 rounded-full pl-2 pr-4 py-1">
-                    <span class="px-2 py-0.5 bg-red-600 text-[10px] font-black text-white rounded-full animate-pulse">LIVE</span>
-                    <span class="text-[11px] font-bold text-red-900 uppercase tracking-widest">Inscriptions Session Février 2026</span>
+                <div class="inline-flex items-center gap-2 bg-slate-900 border border-slate-800 rounded-full pl-2 pr-4 py-1 shadow-lg">
+                    <span class="px-2 py-0.5 bg-red-600 text-[10px] font-black text-white rounded-full">EXCLUSIF</span>
+                    <span class="text-[11px] font-bold text-white uppercase tracking-widest">Banque d'épreuves TCF Canada 2024-2026</span>
                 </div>
 
-                <h1 class="text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 leading-[1.5] tracking-tight">
-                    Visez le 
-                    <span class="relative inline-block">
-                        <span class="text-red-600">NCLC 10</span>
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 leading-[1.1] tracking-tight">
+                    Accédez aux <br>
+                    <span class="relative inline-block text-red-600">
+                        Sujets Réels
                         <svg class="absolute -bottom-2 left-0 w-full h-3 text-red-200" viewBox="0 0 100 12" preserveAspectRatio="none">
                             <path d="M0,10 Q50,0 100,10" stroke="currentColor" stroke-width="4" fill="transparent" stroke-linecap="round"/>
                         </svg>
                     </span>
                     <br>
-                    <span class="text-slate-700">en toute sérénité.</span>
+                    <span class="text-slate-700 italic">du TCF Canada.</span>
                 </h1>
 
                 <p class="text-lg md:text-xl text-slate-500 max-w-xl leading-relaxed">
-                    HOKMA réinvente la préparation migratoire. Une synergie entre 
-                    <span class="text-red-600 font-bold">IA générative</span> 
-                    et coaching expert pour sécuriser votre projet canadien.
+                    Ne perdez plus de temps avec des exercices obsolètes. Achetez nos <span class="text-red-600 font-bold uppercase">Packs d'épreuves authentiques</span>, collectées et corrigées par nos experts pour garantir votre NCLC 10.
                 </p>
 
                 <div class="flex flex-col sm:flex-row items-center gap-6 pt-4">
-                    <a href="{%url 'login'%}" class="group w-full sm:w-auto bg-red-600 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-slate-900 transition-all duration-300 shadow-xl shadow-red-200 flex items-center justify-center gap-3">
-                        Démarrer ma préparation
-                        <i class="fas fa-arrow-right text-sm group-hover:translate-x-1 transition-transform"></i>
+                    <a href="#packs" class="group w-full sm:w-auto bg-red-600 text-white px-8 py-5 rounded-2xl font-black text-lg hover:bg-slate-900 transition-all duration-500 shadow-xl shadow-red-200 flex items-center justify-center gap-3">
+                        Voir les épreuves disponibles
+                        <i class="fas fa-shopping-cart text-sm"></i>
                     </a>
-                    <div class="flex items-center gap-4 bg-slate-50 px-6 py-3 rounded-2xl border border-slate-100">
-                        <span class="text-2xl font-black text-slate-900">98%</span>
-                        <span class="text-[10px] leading-tight font-bold uppercase text-slate-400 tracking-wider">Taux de réussite<br>Cible CLB 7+</span>
+                    <div class="flex items-center gap-4">
+                        <div class="flex -space-x-2">
+                            <img class="w-10 h-10 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100" alt="User">
+                            <img class="w-10 h-10 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100" alt="User">
+                        </div>
+                        <span class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">+500 épreuves vendues</span>
                     </div>
                 </div>
             </div>
 
             <div class="lg:col-span-5 relative">
-                <div class="absolute -top-10 -right-10 opacity-[0.03] rotate-12 -z-10">
-                    <svg width="300" height="300" viewBox="0 0 24 24" fill="red"><path d="M12 .3L9.5 8.5H1.5L8 13.2L5.5 21.4L12 16.7L18.5 21.4L16 13.2L22.5 8.5H14.5L12 .3Z"/></svg>
-                </div>
-
+                <div class="absolute -top-20 -right-10 w-64 h-64 bg-red-100 rounded-full blur-3xl opacity-50 -z-10"></div>
+                
                 <div class="grid grid-cols-12 gap-4">
-                    <div class="col-span-12 group bg-white border-2 border-slate-100 p-8 rounded-[40px] shadow-xl hover:border-red-100 transition-all">
-                        <div class="flex justify-between items-start mb-6">
-                            <div class="w-14 h-14 bg-red-600 rounded-2xl flex items-center justify-center shadow-lg shadow-red-200">
-                                <i class="fas fa-microphone text-white text-xl"></i>
-                            </div>
-                            <div class="text-right">
-                                <span class="text-[10px] font-black text-red-600 uppercase border border-red-200 px-2 py-1 rounded-md">Technologie IA</span>
-                            </div>
-                        </div>
-                        <h3 class="text-2xl font-bold text-slate-900 mb-2">Oral Master Pro</h3>
-                        <p class="text-slate-500 leading-relaxed">Simulateur vocal en temps réel aligné sur les critères d'évaluation officiels de l'IRCC.</p>
-                    </div>
+                   <div class="col-span-12 mb-4 overflow-hidden rounded-[40px] shadow-2xl h-72 border-4 border-white relative group">
+    
+    <div id="carousel-slider" class="flex transition-transform duration-500 ease-out h-full w-full">
+        <div class="min-w-full h-full">
+            <img src="https://images.unsplash.com/photo-1531545514256-b1400bc00f31?auto=format&fit=crop&q=80&w=800" 
+                 class="w-full h-full object-cover" alt="Étudiants africains réussite">
+        </div>
+        <div class="min-w-full h-full">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800" 
+                 class="w-full h-full object-cover" alt="Préparation intensive">
+        </div>
+        <div class="min-w-full h-full">
+            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800" 
+                 class="w-full h-full object-cover" alt="Objectif Canada">
+        </div>
+    </div>
 
-                    <div class="col-span-5 bg-slate-900 rounded-[40px] p-6 flex flex-col items-center justify-center text-center">
-                        <div class="relative mb-3">
-                            <img src="https://flagcdn.com/w80/ca.png" class="w-12 rounded-sm shadow-sm" alt="Canada">
-                        </div>
-                        <span class="text-[10px] font-bold text-white uppercase tracking-widest">Expertise</span>
-                        <span class="text-red-500 text-[10px] font-bold">CANADA 2026</span>
-                    </div>
+    <button onclick="moveSlide(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 backdrop-blur-md text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+        <i class="fas fa-chevron-left"></i>
+    </button>
+    <button onclick="moveSlide(1)" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 backdrop-blur-md text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+        <i class="fas fa-chevron-right"></i>
+    </button>
 
-                    <div class="col-span-7 bg-red-600 rounded-[40px] p-6 text-white relative overflow-hidden group cursor-pointer">
+    <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+        <div class="dot w-2 h-2 rounded-full bg-white opacity-50"></div>
+        <div class="dot w-2 h-2 rounded-full bg-white opacity-50"></div>
+        <div class="dot w-2 h-2 rounded-full bg-white opacity-50"></div>
+    </div>
+</div>
+
+<script>
+    let currentSlide = 0;
+    const slider = document.getElementById('carousel-slider');
+    const dots = document.querySelectorAll('.dot');
+    const totalSlides = 3;
+
+    function updateSlider() {
+        slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+        dots.forEach((dot, index) => {
+            dot.style.opacity = index === currentSlide ? '1' : '0.5';
+            dot.style.width = index === currentSlide ? '24px' : '8px'; // Effet de pilule pour le point actif
+        });
+    }
+
+    function moveSlide(direction) {
+        currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+        updateSlider();
+    }
+
+    // Défilement automatique toutes les 5 secondes
+    setInterval(() => moveSlide(1), 5000);
+    updateSlider();
+</script>
+
+<style>
+    .dot { transition: all 0.3s ease; }
+</style>
+                    
+                    <div class="col-span-12 group bg-slate-900 p-8 rounded-[40px] shadow-2xl relative overflow-hidden transition-transform hover:-translate-y-2">
                         <div class="relative z-10">
-                            <h4 class="font-bold text-lg leading-tight mb-1">Packs PDF<br>Interactifs</h4>
-                            <p class="text-red-100 text-[10px] font-medium">Actualisé chaque lundi</p>
+                            <span class="bg-red-600 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase mb-4 inline-block">Le plus vendu</span>
+                            <h3 class="text-2xl font-black text-white mb-2 italic">Compendium EO/EE</h3>
+                            <div class="flex items-center justify-between border-t border-white/10 pt-4">
+                                <span class="text-2xl font-black text-white">45.000 FCFA</span>
+                                <span class="text-red-500 font-bold text-xs uppercase tracking-widest hover:underline cursor-pointer">Acheter <i class="fas fa-arrow-right ml-1"></i></span>
+                            </div>
                         </div>
-                        <div class="absolute bottom-4 right-4 bg-white/20 p-3 rounded-full backdrop-blur-md group-hover:scale-110 transition-transform">
-                            <i class="fas fa-cloud-download-alt"></i>
-                        </div>
+                    </div>
+
+                    <div class="col-span-6 bg-red-50 border border-red-100 rounded-[30px] p-6 text-center">
+                        <p class="text-[10px] font-black text-red-600 uppercase tracking-widest">Mise à jour</p>
+                        <p class="text-sm font-bold text-slate-800">26 Janvier 2026</p>
+                    </div>
+
+                    <div class="col-span-6 bg-white border-2 border-slate-100 rounded-[30px] p-6 text-center">
+                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Format</p>
+                        <p class="text-sm font-black text-slate-900 uppercase">PDF Interactif</p>
                     </div>
                 </div>
             </div>
@@ -168,43 +365,59 @@
         </div>
     </div>
 </header>
-
-<section id="packs" class="py-7 bg-slate-50 relative overflow-hidden">
+<section id="packs" class="py-5 bg-slate-50 relative overflow-hidden">
     <div class="absolute top-0 left-0 w-64 h-64 bg-red-100/50 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-50/50 rounded-full blur-3xl translate-x-1/3 translate-y-1/3"></div>
 
     <div class="max-w-7xl mx-auto px-6 relative z-10">
         <div class="text-center mb-24">
-            <h2 class="text-4xl lg:text-7xl font-black mb-6 text-slate-900 tracking-tighter">
+            <h4 class="text-4xl lg:text-5xl font-black mb-6 text-slate-900 tracking-tighter">
                 CHOISISSEZ VOTRE <br class="sm:hidden">
                 <span class="relative inline-block">
                     RÉUSSITE
                     <div class="absolute -bottom-3 left-0 w-full h-3 lg:h-5 bg-red-600 rounded-full"></div>
                 </span>
-            </h2>
-            <p class="text-xl text-slate-500 font-bold uppercase tracking-widest mt-12">Accès immédiat après paiement • Mise à jour IRCC 2026</p>
+            </h4>
+            <p class="text-xl text-slate-500 font-bold uppercase tracking-widest mt-12 italic">
+                Accès immédiat après paiement • Mise à jour IRCC 2026
+            </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             
-            <div class="bg-white p-8 rounded-[40px] border border-slate-200 card-hover flex flex-col">
+            <div class="bg-white p-8 rounded-[40px] border border-slate-200 hover:shadow-xl transition-all flex flex-col">
                 <div class="w-14 h-14 bg-slate-100 rounded-2xl flex items-center justify-center mb-6">
                     <i class="fas fa-paper-plane text-slate-600 text-xl"></i>
                 </div>
-                <h3 class="text-xl font-black uppercase text-slate-400">Pack Argent</h3>
+                <h3 class="text-xl font-black uppercase text-slate-400">Hockma Quartz</h3>
                 <div class="text-3xl font-black my-4 text-slate-900">25.000 <span class="text-sm font-bold">XAF</span></div>
                 <div class="h-1.5 w-12 bg-slate-300 rounded-full mb-8"></div>
                 
                 <ul class="space-y-4 mb-10 flex-grow text-sm font-bold text-slate-600">
-                    <li><i class="fas fa-check text-emerald-500 mr-2"></i> 100+ Sujets Compréhension</li>
-                    <li><i class="fas fa-check text-emerald-500 mr-2"></i> Lexique Immigration Canada</li>
-                    <li><i class="fas fa-check text-emerald-500 mr-2"></i> PDF Méthodologie</li>
-                    <li class="opacity-30"><i class="fas fa-times mr-2"></i> Simulateur Oral IA</li>
+                    <li class="flex items-center group/list">
+                        <div class="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center mr-3">
+                            <i class="fas fa-check text-[10px] text-emerald-600"></i>
+                        </div>
+                        <span>Compréhension Écrite <span class="text-[10px] bg-slate-100 px-2 py-0.5 rounded-full ml-1 text-slate-400">7 JOURS</span></span>
+                    </li>
+                    <li class="flex items-center group/list">
+                        <div class="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center mr-3">
+                            <i class="fas fa-check text-[10px] text-emerald-600"></i>
+                        </div>
+                        <span>Expression Orale <span class="text-[10px] bg-red-100 px-2 py-0.5 rounded-full ml-1 text-red-600">SUJETS RÉELS</span></span>
+                    </li>
+                    <li class="flex items-center group/list">
+                        <div class="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center mr-3">
+                            <i class="fas fa-check text-[10px] text-emerald-600"></i>
+                        </div>
+                        <span>Expression Écrite <span class="text-[10px] bg-emerald-100 px-2 py-0.5 rounded-full ml-1 text-emerald-600">NCLC 10</span></span>
+                    </li>
                 </ul>
-                <a href="#" class="w-full py-4 bg-slate-100 text-slate-900 rounded-2xl font-black text-center hover:bg-slate-200 transition-all">Choisir Argent</a>
+                <a href="#" class="w-full py-4 bg-slate-100 text-slate-900 rounded-2xl font-black text-center hover:bg-slate-200 transition-all">Choisir Quartz</a>
             </div>
 
-            <div class="bg-white p-8 rounded-[40px] border-4 border-red-600 card-hover flex flex-col relative shadow-2xl shadow-red-500/10 transform lg:-translate-y-4">
-                <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-red-600 text-white px-5 py-1.5 rounded-full text-[10px] font-black uppercase tracking-tighter">Le plus populaire 🔥</div>
+            <div class="bg-white p-8 rounded-[40px] border-4 border-red-600 flex flex-col relative shadow-2xl shadow-red-500/10 transform lg:-translate-y-4 scale-105 z-20">
+                <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-red-600 text-white px-5 py-1.5 rounded-full text-[10px] font-black uppercase tracking-tighter shadow-xl">Le plus populaire 🔥</div>
                 <div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center mb-6 text-red-600">
                     <i class="fas fa-gem text-xl"></i>
                 </div>
@@ -213,15 +426,15 @@
                 <div class="h-1.5 w-12 bg-red-600 rounded-full mb-8"></div>
                 
                 <ul class="space-y-4 mb-10 flex-grow text-sm font-bold text-slate-800">
-                    <li><i class="fas fa-check text-red-600 mr-2"></i> Tout le Pack Argent</li>
+                    <li><i class="fas fa-check text-red-600 mr-2"></i> Tout le Pack Quartz</li>
                     <li><i class="fas fa-check text-red-600 mr-2"></i> Simulateur Oral IA (Illimité)</li>
                     <li><i class="fas fa-check text-red-600 mr-2"></i> Groupe Privé WhatsApp</li>
                     <li><i class="fas fa-check text-red-600 mr-2"></i> Correction Écrits par IA</li>
                 </ul>
-                <a href="#" class="w-full py-4 bg-red-600 text-white rounded-2xl font-black text-center shadow-lg shadow-red-500/30 hover:scale-105 transition-all">Obtenir l'Accès</a>
+                <a href="#" class="w-full py-4 bg-red-600 text-white rounded-2xl font-black text-center shadow-lg shadow-red-500/30 hover:brightness-110 transition-all">Obtenir l'Accès</a>
             </div>
 
-            <div class="bg-slate-900 p-8 rounded-[40px] card-hover flex flex-col text-white shadow-2xl shadow-slate-900/40">
+            <div class="bg-slate-900 p-8 rounded-[40px] flex flex-col text-white shadow-2xl shadow-slate-900/40 relative z-10">
                 <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6">
                     <i class="fas fa-crown text-yellow-400 text-xl"></i>
                 </div>
@@ -238,8 +451,8 @@
                 <a href="#" class="w-full py-4 bg-white text-slate-900 rounded-2xl font-black text-center hover:bg-yellow-400 transition-all">Choisir Diamant</a>
             </div>
 
-            <div class="bg-white p-8 rounded-[40px] border border-slate-200 card-hover flex flex-col border-dashed border-2">
-                <div class="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center mb-6 text-emerald-600">
+            <div class="bg-white p-8 rounded-[40px] border border-slate-200 flex flex-col border-dashed border-2 hover:border-emerald-500 transition-colors group">
+                <div class="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center mb-6 text-emerald-600 group-hover:scale-110 transition-transform">
                     <i class="fas fa-star text-xl"></i>
                 </div>
                 <h3 class="text-xl font-black uppercase text-emerald-600">Coaching Élite</h3>
@@ -254,7 +467,27 @@
                 </ul>
                 <a href="#" class="w-full py-4 border-2 border-emerald-500 text-emerald-600 rounded-2xl font-black text-center hover:bg-emerald-500 hover:text-white transition-all">Contacter Expert</a>
             </div>
+        </div>
 
+        <div class="mt-20 flex flex-col items-center">
+            <div class="relative group">
+                <div class="absolute -inset-1 bg-gradient-to-r from-red-600 to-slate-900 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+                <div class="relative flex flex-col md:flex-row items-center gap-6 bg-white border border-slate-100 px-8 py-4 rounded-full shadow-xl">
+                    <div class="flex -space-x-3">
+                        <div class="w-10 h-10 rounded-full border-2 border-white bg-slate-900 flex items-center justify-center text-[10px] font-black text-white italic">TCF</div>
+                        <div class="w-10 h-10 rounded-full border-2 border-white bg-red-600 flex items-center justify-center text-[10px] font-black text-white italic">TEF</div>
+                        <div class="w-10 h-10 rounded-full border-2 border-white bg-emerald-500 flex items-center justify-center text-[10px] font-black text-white italic">EE</div>
+                    </div>
+                    <p class="text-slate-600 font-bold text-sm lg:text-base">
+                        Besoin d'un module spécifique ou d'une formation sur-mesure ?
+                    </p>
+                    <a href="#" class="flex items-center gap-2 text-red-600 font-black uppercase text-sm hover:translate-x-2 transition-transform">
+                        Voir plus de packs 
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            <p class="mt-6 text-slate-400 text-xs font-bold uppercase tracking-widest">Plus de 500 candidats accompagnés en 2025</p>
         </div>
     </div>
 </section>

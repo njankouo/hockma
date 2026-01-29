@@ -28,6 +28,7 @@ urlpatterns = [
     path('forgot-password/', views.forgot_password_view, name='forgot-password'),
     path('verification-otp-code/', views.verificationotp, name='verification-otp-code'),
     path('register/', views.register_view, name='register'),
-    path('authentification/', views.login_view, name='authentification')
+    path('authentification/', views.login_view, name='authentification'),
+    path('configuration-admin/', views.admin_view, name='configuration-admin'),
  
 ]
