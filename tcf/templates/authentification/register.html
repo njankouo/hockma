@@ -1,0 +1,89 @@
+{% extends 'index.html' %}
+{% block content %}
+
+<section class="min-h-screen pt-32 pb-20 flex items-center justify-center bg-gradient-to-br from-slate-50 via-white to-red-50/30 relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-red-100/30 rounded-full blur-[120px] -z-10 translate-x-1/2 -translate-y-1/2"></div>
+    <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-slate-200/40 rounded-full blur-[120px] -z-10 -translate-x-1/2 translate-y-1/2"></div>
+
+    <div class="max-w-xl w-full px-6">
+        <div class="flex justify-center mb-8">
+            <div class="bg-emerald-100 text-emerald-700 px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-widest flex items-center gap-2 shadow-sm border border-emerald-200">
+                <i class="fas fa-shield-check"></i> Inscription sécurisée • IRCC 2026 Ready
+            </div>
+        </div>
+
+        <div class="bg-white/80 backdrop-blur-2xl p-8 md:p-12 rounded-[50px] border border-white shadow-2xl shadow-slate-200/60 relative">
+            
+            <div class="text-center mb-10">
+                <h2 class="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter">
+                    REJOINDRE <span class="text-red-600 italic">HOKMA</span>
+                </h2>
+                <div class="h-3 w-24 bg-red-600 rounded-full mx-auto mt-3"></div>
+                <p class="text-slate-500 font-bold mt-6 uppercase text-xs tracking-[0.2em]">Créez votre accès candidat au Canada</p>
+            </div>
+
+            <form action="{% url 'register' %}" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {% csrf_token %}
+                
+                <div class="space-y-2 md:col-span-2">
+                    <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-2">Nom Complet</label>
+                    <div class="relative">
+                        <i class="fas fa-user absolute left-5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                        <input type="text" placeholder="Ex: Jean-Luc Mbarga" required name='nom'
+                            class="w-full pl-14 pr-6 py-4 bg-slate-100/50 border-2 border-transparent focus:border-red-600 focus:bg-white rounded-2xl outline-none font-bold transition-all">
+                    </div>
+                </div>
+
+                <div class="space-y-2 md:col-span-2">
+                    <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-2">Email de contact</label>
+                    <div class="relative">
+                        <i class="fas fa-envelope absolute left-5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                        <input type="email" placeholder="votre@email.com" required
+                            class="w-full pl-14 pr-6 py-4 bg-slate-100/50 border-2 border-transparent focus:border-red-600 focus:bg-white rounded-2xl outline-none font-bold transition-all">
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-2">Mot de passe</label>
+                    <div class="relative">
+                        <i class="fas fa-lock absolute left-5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                        <input type="password" placeholder="••••••••" required name='password'
+                            class="w-full pl-14 pr-6 py-4 bg-slate-100/50 border-2 border-transparent focus:border-red-600 focus:bg-white rounded-2xl outline-none font-bold transition-all">
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-2">Confirmation</label>
+                    <div class="relative">
+                        <i class="fas fa-check-double absolute left-5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                        <input type="password" placeholder="••••••••" required name='password2'
+                            class="w-full pl-14 pr-6 py-4 bg-slate-100/50 border-2 border-transparent focus:border-red-600 focus:bg-white rounded-2xl outline-none font-bold transition-all">
+                    </div>
+                </div>
+
+                <div class="md:col-span-2 flex items-start gap-3 px-2 py-2">
+                    <input type="checkbox" id="terms" required class="mt-1 w-5 h-5 rounded-lg border-2 border-slate-300 text-red-600 focus:ring-red-600">
+                    <label for="terms" class="text-[11px] font-bold text-slate-500 leading-tight">
+                        J'accepte les conditions d'utilisation et je confirme vouloir viser le <span class="text-red-600 font-black italic">NCLC 10</span> avec la méthode HOKMA.
+                    </label>
+                </div>
+
+                <div class="md:col-span-2">
+                    <button type="submit" 
+                        class="w-full py-5 bg-red-600 text-white rounded-2xl font-black text-lg shadow-xl shadow-red-500/40 hover:bg-slate-900 transition-all duration-500 transform active:scale-95 flex items-center justify-center gap-3">
+                        Créer mon accès <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </form>
+
+            <div class="mt-10 pt-8 border-t border-slate-100 text-center">
+                <p class="text-sm font-bold text-slate-500">
+                    Déjà inscrit ? 
+                    <a href="/login" class="text-red-600 font-black hover:underline ml-2 uppercase text-xs tracking-widest">Se connecter</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

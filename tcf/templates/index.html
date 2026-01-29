@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOKMA TCF | L'Excellence pour le Canada</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    {% load static %}
+
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); }
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+        @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+        .hero-mesh {
+            background-color: #ffffff;
+            background-image: radial-gradient(at 0% 0%, rgba(254, 226, 226, 0.5) 0, transparent 50%), 
+                              radial-gradient(at 100% 100%, rgba(241, 245, 249, 1) 0, transparent 50%);
+        }
+        .blob { border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%; }
+    </style>
+</head>
+<body class="bg-[#fcfcfc] text-slate-900">
+
+ <nav class="fixed top-0 w-full z-[1000] glass backdrop-blur-xl border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 lg:h-20 flex justify-between items-center">
+        
+        <div class="flex items-center gap-4 group cursor-pointer">
+            <div class="w-12 h-12 sm:w-14 sm:h-14 bg-white rounded-2xl flex items-center justify-center shadow-2xl shadow-red-500/30 group-hover:scale-105 transition-all duration-500 overflow-hidden ring-1 ring-black/5">
+                <img src="{% static 'logo.jpeg' %}" alt="Logo HOKMA" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+            </div>
+
+            <div class="flex flex-col justify-center">
+                <span class="font-black text-2xl sm:text-3xl tracking-tighter leading-none uppercase bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text text-transparent">
+                    HOKMA<span class="text-red-600 italic font-black ml-0.5">TCF</span>
+                </span>
+                <span class="text-[10px] font-bold tracking-[0.2em] text-slate-500 uppercase mt-1">Excellence Linguistique</span>
+            </div>
+        </div>
+
+        <div class="hidden lg:flex items-center gap-8">
+            <div class="flex items-center gap-10 font-bold text-xs uppercase tracking-[0.2em] text-slate-600 mr-4">
+                <a href="#packs" class="hover:text-red-600 transition-colors py-2">Programmes</a>
+                <a href="#features" class="hover:text-red-600 transition-colors py-2">Méthode</a>
+                <a href="#faq" class="hover:text-red-600 transition-colors py-2">Support</a>
+            </div>
+            <a href="{% url 'login' %}" class="bg-slate-900 text-white px-7 py-3 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-red-600 shadow-xl transition-all duration-300 hover:-translate-y-0.5">
+                Espace Pro
+            </a>
+        </div>
+
+        <button id="nav-trigger" class="lg:hidden flex items-center gap-2 bg-slate-50 p-2 rounded-xl border border-slate-200 shadow-sm">
+            <div class="w-10 h-10 bg-slate-900 rounded-lg flex flex-col items-center justify-center gap-1">
+                <span class="w-5 h-0.5 bg-white rounded"></span>
+                <span class="w-5 h-0.5 bg-white rounded"></span>
+                <span class="w-5 h-0.5 bg-white rounded"></span>
+            </div>
+        </button>
+    </div>
+</nav>
+{%block content%}
+    <!-- Mobile Menu Overlay -->
+    <div id="nav-overlay" class="fixed inset-0 bg-gradient-to-b from-white/95 via-white/90 to-slate-50/90 backdrop-blur-2xl z-[999] translate-y-[-100%] opacity-0 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] flex flex-col justify-center px-6 sm:px-10">
+        <div class="max-w-md mx-auto space-y-12 text-center">
+            <div class="overflow-hidden">
+                <a href="#packs" class="mobile-link block text-5xl sm:text-6xl md:text-7xl font-black tracking-[-0.1em] bg-gradient-to-r from-slate-900 via-slate-800 to-red-600 bg-clip-text text-transparent hover:scale-110 transition-all duration-500">Packs</a>
+            </div>
+            <div class="overflow-hidden">
+                <a href="#features" class="mobile-link block text-5xl sm:text-6xl md:text-7xl font-black tracking-[-0.1em] bg-gradient-to-r from-slate-900 via-slate-800 to-red-600 bg-clip-text text-transparent hover:scale-110 transition-all duration-500">Méthode</a>
+            </div>
+            <div class="overflow-hidden">
+                <a href="#faq" class="mobile-link block text-5xl sm:text-6xl md:text-7xl font-black tracking-[-0.1em] bg-gradient-to-r from-slate-900 via-slate-800 to-red-600 bg-clip-text text-transparent hover:scale-110 transition-all duration-500">Support</a>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-6">
+            <a href="#" class="w-16 h-16 bg-white/80 backdrop-blur-xl border border-slate-200 rounded-3xl flex items-center justify-center text-2xl shadow-2xl hover:shadow-white/50 transition-all duration-300 hover:scale-110"><i class="fab fa-whatsapp text-emerald-500"></i></a>
+            <a href="#" class="w-16 h-16 bg-white/80 backdrop-blur-xl border border-slate-200 rounded-3xl flex items-center justify-center text-2xl shadow-2xl hover:shadow-white/50 transition-all duration-300 hover:scale-110"><i class="fab fa-instagram text-pink-500"></i></a>
+        </div>
+    </div>
+
+<header class="relative min-h-[90vh] flex items-center pt-16 pb-16 bg-white overflow-hidden font-sans">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_80%_50%,rgba(220,38,38,0.03)_0%,rgba(255,255,255,1)_70%)] -z-20"></div>
+
+    <div class="max-w-7xl mx-auto px-6 w-full">
+        <div class="grid lg:grid-cols-12 gap-12 items-center">
+            
+            <div class="lg:col-span-7 space-y-8">
+                <div class="inline-flex items-center gap-2 bg-red-50 border border-red-100 rounded-full pl-2 pr-4 py-1">
+                    <span class="px-2 py-0.5 bg-red-600 text-[10px] font-black text-white rounded-full animate-pulse">LIVE</span>
+                    <span class="text-[11px] font-bold text-red-900 uppercase tracking-widest">Inscriptions Session Février 2026</span>
+                </div>
+
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 leading-[1.5] tracking-tight">
+                    Visez le 
+                    <span class="relative inline-block">
+                        <span class="text-red-600">NCLC 10</span>
+                        <svg class="absolute -bottom-2 left-0 w-full h-3 text-red-200" viewBox="0 0 100 12" preserveAspectRatio="none">
+                            <path d="M0,10 Q50,0 100,10" stroke="currentColor" stroke-width="4" fill="transparent" stroke-linecap="round"/>
+                        </svg>
+                    </span>
+                    <br>
+                    <span class="text-slate-700">en toute sérénité.</span>
+                </h1>
+
+                <p class="text-lg md:text-xl text-slate-500 max-w-xl leading-relaxed">
+                    HOKMA réinvente la préparation migratoire. Une synergie entre 
+                    <span class="text-red-600 font-bold">IA générative</span> 
+                    et coaching expert pour sécuriser votre projet canadien.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center gap-6 pt-4">
+                    <a href="{%url 'login'%}" class="group w-full sm:w-auto bg-red-600 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-slate-900 transition-all duration-300 shadow-xl shadow-red-200 flex items-center justify-center gap-3">
+                        Démarrer ma préparation
+                        <i class="fas fa-arrow-right text-sm group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                    <div class="flex items-center gap-4 bg-slate-50 px-6 py-3 rounded-2xl border border-slate-100">
+                        <span class="text-2xl font-black text-slate-900">98%</span>
+                        <span class="text-[10px] leading-tight font-bold uppercase text-slate-400 tracking-wider">Taux de réussite<br>Cible CLB 7+</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-5 relative">
+                <div class="absolute -top-10 -right-10 opacity-[0.03] rotate-12 -z-10">
+                    <svg width="300" height="300" viewBox="0 0 24 24" fill="red"><path d="M12 .3L9.5 8.5H1.5L8 13.2L5.5 21.4L12 16.7L18.5 21.4L16 13.2L22.5 8.5H14.5L12 .3Z"/></svg>
+                </div>
+
+                <div class="grid grid-cols-12 gap-4">
+                    <div class="col-span-12 group bg-white border-2 border-slate-100 p-8 rounded-[40px] shadow-xl hover:border-red-100 transition-all">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="w-14 h-14 bg-red-600 rounded-2xl flex items-center justify-center shadow-lg shadow-red-200">
+                                <i class="fas fa-microphone text-white text-xl"></i>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-[10px] font-black text-red-600 uppercase border border-red-200 px-2 py-1 rounded-md">Technologie IA</span>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-2">Oral Master Pro</h3>
+                        <p class="text-slate-500 leading-relaxed">Simulateur vocal en temps réel aligné sur les critères d'évaluation officiels de l'IRCC.</p>
+                    </div>
+
+                    <div class="col-span-5 bg-slate-900 rounded-[40px] p-6 flex flex-col items-center justify-center text-center">
+                        <div class="relative mb-3">
+                            <img src="https://flagcdn.com/w80/ca.png" class="w-12 rounded-sm shadow-sm" alt="Canada">
+                        </div>
+                        <span class="text-[10px] font-bold text-white uppercase tracking-widest">Expertise</span>
+                        <span class="text-red-500 text-[10px] font-bold">CANADA 2026</span>
+                    </div>
+
+                    <div class="col-span-7 bg-red-600 rounded-[40px] p-6 text-white relative overflow-hidden group cursor-pointer">
+                        <div class="relative z-10">
+                            <h4 class="font-bold text-lg leading-tight mb-1">Packs PDF<br>Interactifs</h4>
+                            <p class="text-red-100 text-[10px] font-medium">Actualisé chaque lundi</p>
+                        </div>
+                        <div class="absolute bottom-4 right-4 bg-white/20 p-3 rounded-full backdrop-blur-md group-hover:scale-110 transition-transform">
+                            <i class="fas fa-cloud-download-alt"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</header>
+
+<section id="packs" class="py-7 bg-slate-50 relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-64 h-64 bg-red-100/50 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="text-center mb-24">
+            <h2 class="text-4xl lg:text-7xl font-black mb-6 text-slate-900 tracking-tighter">
+                CHOISISSEZ VOTRE <br class="sm:hidden">
+                <span class="relative inline-block">
+                    RÉUSSITE
+                    <div class="absolute -bottom-3 left-0 w-full h-3 lg:h-5 bg-red-600 rounded-full"></div>
+                </span>
+            </h2>
+            <p class="text-xl text-slate-500 font-bold uppercase tracking-widest mt-12">Accès immédiat après paiement • Mise à jour IRCC 2026</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            <div class="bg-white p-8 rounded-[40px] border border-slate-200 card-hover flex flex-col">
+                <div class="w-14 h-14 bg-slate-100 rounded-2xl flex items-center justify-center mb-6">
+                    <i class="fas fa-paper-plane text-slate-600 text-xl"></i>
+                </div>
+                <h3 class="text-xl font-black uppercase text-slate-400">Pack Argent</h3>
+                <div class="text-3xl font-black my-4 text-slate-900">25.000 <span class="text-sm font-bold">XAF</span></div>
+                <div class="h-1.5 w-12 bg-slate-300 rounded-full mb-8"></div>
+                
+                <ul class="space-y-4 mb-10 flex-grow text-sm font-bold text-slate-600">
+                    <li><i class="fas fa-check text-emerald-500 mr-2"></i> 100+ Sujets Compréhension</li>
+                    <li><i class="fas fa-check text-emerald-500 mr-2"></i> Lexique Immigration Canada</li>
+                    <li><i class="fas fa-check text-emerald-500 mr-2"></i> PDF Méthodologie</li>
+                    <li class="opacity-30"><i class="fas fa-times mr-2"></i> Simulateur Oral IA</li>
+                </ul>
+                <a href="#" class="w-full py-4 bg-slate-100 text-slate-900 rounded-2xl font-black text-center hover:bg-slate-200 transition-all">Choisir Argent</a>
+            </div>
+
+            <div class="bg-white p-8 rounded-[40px] border-4 border-red-600 card-hover flex flex-col relative shadow-2xl shadow-red-500/10 transform lg:-translate-y-4">
+                <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-red-600 text-white px-5 py-1.5 rounded-full text-[10px] font-black uppercase tracking-tighter">Le plus populaire 🔥</div>
+                <div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center mb-6 text-red-600">
+                    <i class="fas fa-gem text-xl"></i>
+                </div>
+                <h3 class="text-xl font-black uppercase text-red-600">Pack Émeraude</h3>
+                <div class="text-3xl font-black my-4 text-slate-900">45.000 <span class="text-sm font-bold">XAF</span></div>
+                <div class="h-1.5 w-12 bg-red-600 rounded-full mb-8"></div>
+                
+                <ul class="space-y-4 mb-10 flex-grow text-sm font-bold text-slate-800">
+                    <li><i class="fas fa-check text-red-600 mr-2"></i> Tout le Pack Argent</li>
+                    <li><i class="fas fa-check text-red-600 mr-2"></i> Simulateur Oral IA (Illimité)</li>
+                    <li><i class="fas fa-check text-red-600 mr-2"></i> Groupe Privé WhatsApp</li>
+                    <li><i class="fas fa-check text-red-600 mr-2"></i> Correction Écrits par IA</li>
+                </ul>
+                <a href="#" class="w-full py-4 bg-red-600 text-white rounded-2xl font-black text-center shadow-lg shadow-red-500/30 hover:scale-105 transition-all">Obtenir l'Accès</a>
+            </div>
+
+            <div class="bg-slate-900 p-8 rounded-[40px] card-hover flex flex-col text-white shadow-2xl shadow-slate-900/40">
+                <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6">
+                    <i class="fas fa-crown text-yellow-400 text-xl"></i>
+                </div>
+                <h3 class="text-xl font-black uppercase text-yellow-400">Pack Diamant</h3>
+                <div class="text-3xl font-black my-4">75.000 <span class="text-sm font-bold">XAF</span></div>
+                <div class="h-1.5 w-12 bg-yellow-400 rounded-full mb-8"></div>
+                
+                <ul class="space-y-4 mb-10 flex-grow text-sm font-bold text-slate-300">
+                    <li><i class="fas fa-check text-yellow-400 mr-2"></i> Tout le Pack Émeraude</li>
+                    <li><i class="fas fa-check text-yellow-400 mr-2"></i> 02 Simulations avec Expert</li>
+                    <li><i class="fas fa-check text-yellow-400 mr-2"></i> Plan de Réussite 15 jours</li>
+                    <li><i class="fas fa-check text-yellow-400 mr-2"></i> Accès Prioritaire Support</li>
+                </ul>
+                <a href="#" class="w-full py-4 bg-white text-slate-900 rounded-2xl font-black text-center hover:bg-yellow-400 transition-all">Choisir Diamant</a>
+            </div>
+
+            <div class="bg-white p-8 rounded-[40px] border border-slate-200 card-hover flex flex-col border-dashed border-2">
+                <div class="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center mb-6 text-emerald-600">
+                    <i class="fas fa-star text-xl"></i>
+                </div>
+                <h3 class="text-xl font-black uppercase text-emerald-600">Coaching Élite</h3>
+                <div class="text-3xl font-black my-4 text-slate-900">150.000 <span class="text-sm font-bold">XAF</span></div>
+                <div class="h-1.5 w-12 bg-emerald-500 rounded-full mb-8"></div>
+                
+                <ul class="space-y-4 mb-10 flex-grow text-sm font-bold text-slate-600">
+                    <li><i class="fas fa-check text-emerald-500 mr-2"></i> Tout le Pack Diamant</li>
+                    <li><i class="fas fa-check text-emerald-500 mr-2"></i> Accompagnement H24</li>
+                    <li><i class="fas fa-check text-emerald-500 mr-2"></i> Garantie "Admis ou Remboursé"</li>
+                    <li><i class="fas fa-check text-emerald-500 mr-2"></i> Dossier Immigration Offert</li>
+                </ul>
+                <a href="#" class="w-full py-4 border-2 border-emerald-500 text-emerald-600 rounded-2xl font-black text-center hover:bg-emerald-500 hover:text-white transition-all">Contacter Expert</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section class="py-7 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+        
+        <div class="text-center max-w-3xl mx-auto mb-20">
+            <h2 class="text-[11px] font-black uppercase tracking-[0.3em] text-red-600 mb-4">Profils cibles</h2>
+            <h3 class="text-4xl md:text-5xl font-black text-slate-900 leading-tight">
+                À qui s'adresse <span class="relative">HOKMA ?<span class="absolute bottom-1 left-0 w-full h-2 bg-red-100 -z-10"></span></span>
+            </h3>
+            <p class="mt-6 text-slate-500 text-lg leading-relaxed">
+                Que vous soyez au début de votre réflexion ou déjà dans le bassin d'Entrée Express, notre technologie s'adapte à votre urgence.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            
+            <div class="group p-10 rounded-[40px] bg-slate-50 border border-transparent hover:border-red-100 hover:bg-white hover:shadow-2xl hover:shadow-red-100/50 transition-all duration-500">
+                <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-sm group-hover:bg-red-600 group-hover:text-white transition-colors duration-500 mb-8">
+                    <i class="fas fa-graduation-cap text-xl"></i>
+                </div>
+                <h4 class="text-2xl font-bold text-slate-900 mb-4">Le Candidat "Elite"</h4>
+                <p class="text-slate-500 leading-relaxed mb-6">
+                    Vous visez le **NCLC 9 ou 10** pour maximiser vos points SCG et garantir votre extraction du bassin d'Entrée Express.
+                </p>
+                <ul class="space-y-3 text-sm font-bold text-slate-400">
+                    <li class="flex items-center gap-2"><i class="fas fa-check text-red-600 text-[10px]"></i> OPTIMISATION DE SCORE</li>
+                    <li class="flex items-center gap-2"><i class="fas fa-check text-red-600 text-[10px]"></i> STRATÉGIE MIGRATOIRE</li>
+                </ul>
+            </div>
+
+            <div class="group p-10 rounded-[40px] bg-slate-900 text-white transform md:-translate-y-4 shadow-2xl shadow-slate-300">
+                <div class="w-14 h-14 bg-red-600 rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-red-500/20">
+                    <i class="fas fa-briefcase text-xl text-white"></i>
+                </div>
+                <h4 class="text-2xl font-bold mb-4">Le Professionnel Pressé</h4>
+                <p class="text-slate-300 leading-relaxed mb-6">
+                    Vous travaillez à temps plein et avez besoin d'une méthode **ultra-efficace** pour réussir le TEF/TCF sans y passer des nuits entières.
+                </p>
+                <ul class="space-y-3 text-sm font-bold text-slate-500">
+                    <li class="flex items-center gap-2 text-red-500"><i class="fas fa-bolt"></i> PRÉPARATION ACCÉLÉRÉE</li>
+                    <li class="flex items-center gap-2 text-red-500"><i class="fas fa-bolt"></i> SIMULATIONS IA 24/7</li>
+                </ul>
+            </div>
+
+            <div class="group p-10 rounded-[40px] bg-slate-50 border border-transparent hover:border-red-100 hover:bg-white hover:shadow-2xl hover:shadow-red-100/50 transition-all duration-500">
+                <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-sm group-hover:bg-red-600 group-hover:text-white transition-colors duration-500 mb-8">
+                    <i class="fas fa-heart text-xl"></i>
+                </div>
+                <h4 class="text-2xl font-bold text-slate-900 mb-4">Le Projet Familial</h4>
+                <p class="text-slate-500 leading-relaxed mb-6">
+                    Vous préparez une immigration en famille et chaque point compte pour assurer l'avenir de vos enfants au Canada.
+                </p>
+                <ul class="space-y-3 text-sm font-bold text-slate-400">
+                    <li class="flex items-center gap-2"><i class="fas fa-check text-red-600 text-[10px]"></i> SÉRÉNITÉ TOTALE</li>
+                    <li class="flex items-center gap-2"><i class="fas fa-check text-red-600 text-[10px]"></i> RÉUSSITE GARANTIE</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>
+    <section id="testimonials" class="py-7 bg-slate-50 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 relative">
+            <div class="blob absolute -top-20 -right-20 w-64 h-64 bg-red-100 opacity-50 -z-10"></div>
+            
+            <div class="flex flex-col md:flex-row justify-between items-center mb-16 gap-6">
+                <h2 class="text-5xl font-black tracking-tighter italic">Ils sont déjà au <span class="text-red-600">Canada</span>.</h2>
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-star text-yellow-400"></i>
+                    <i class="fas fa-star text-yellow-400"></i>
+                    <i class="fas fa-star text-yellow-400"></i>
+                    <i class="fas fa-star text-yellow-400"></i>
+                    <i class="fas fa-star text-yellow-400"></i>
+                    <span class="font-black ml-2 text-slate-400 italic">4.9/5 sur Trustpilot</span>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-[32px] border border-slate-100 shadow-lg group hover:-translate-y-2 transition-transform">
+                    <div class="flex gap-1 mb-4 text-emerald-500"><i class="fas fa-check-decagram"></i> <span class="text-[10px] font-black uppercase tracking-widest">NCLC 9 Obtenu</span></div>
+                    <p class="text-slate-600 font-medium italic mb-6">"Le pack Émeraude a sauvé mon dossier Entrée Express. Les sujets d'expression orale étaient identiques à ceux de mon examen !"</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-slate-200 rounded-full flex items-center justify-center font-black text-slate-500">MS</div>
+                        <div><p class="font-black text-sm uppercase">Moussa S.</p><p class="text-[10px] text-slate-400 font-bold tracking-widest uppercase">Depuis Montréal</p></div>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-[32px] border border-slate-100 shadow-lg group hover:-translate-y-2 transition-transform">
+                    <div class="flex gap-1 mb-4 text-emerald-500"><i class="fas fa-check-decagram"></i> <span class="text-[10px] font-black uppercase tracking-widest">NCLC 10 Obtenu</span></div>
+                    <p class="text-slate-600 font-medium italic mb-6">"Incroyable. L'audio est tellement clair que l'examen réel m'a semblé facile. Merci à l'équipe pour le support WhatsApp."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-slate-200 rounded-full flex items-center justify-center font-black text-slate-500">AD</div>
+                        <div><p class="font-black text-sm uppercase">Amélie D.</p><p class="text-[10px] text-slate-400 font-bold tracking-widest uppercase">Depuis Toronto</p></div>
+                    </div>
+                </div>
+                <div class="bg-slate-900 p-8 rounded-[32px] text-white shadow-2xl shadow-slate-300">
+                    <div class="mb-6"><i class="fas fa-quote-left text-red-500 text-3xl"></i></div>
+                    <p class="font-bold italic text-lg leading-relaxed mb-6">"Pourquoi dépenser 200€ en cours particuliers quand HOKMA vous donne tout pour 45€ ?"</p>
+                    <p class="text-red-500 font-black text-xs uppercase tracking-[0.2em] italic">— Kevin L., Admis 2025</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-10">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="bg-red-600 rounded-[60px] p-12 text-center text-white relative overflow-hidden shadow-2xl shadow-red-200">
+                <div class="shimmer absolute inset-0 opacity-20"></div>
+                <h2 class="text-4xl md:text-6xl font-black mb-6 tracking-tighter italic leading-none">Prêt à changer de vie ?</h2>
+                <p class="text-red-100 text-lg mb-10 max-w-xl mx-auto font-medium">Rejoignez les 15 000+ candidats qui ont utilisé HOKMA pour décrocher leur invitation RP au Canada.</p>
+                <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
+                    <a href="#packs" class="bg-white text-red-600 px-12 py-5 rounded-2xl font-black text-lg hover:scale-105 transition shadow-xl uppercase italic">Voir les tarifs</a>
+                    <span class="text-[10px] font-black uppercase tracking-widest opacity-60">Paiement sécurisé SSL</span>
+                </div>
+            </div>
+        </div>
+    </section>
+{%endblock%}
+
+    <footer class="bg-slate-900 text-white pt-24 pb-12 overflow-hidden relative">
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-red-600/10 rounded-full blur-[120px]"></div>
+    
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
+            
+            <div class="space-y-6">
+                <div class="flex flex-col">
+                    <span class="text-3xl font-black tracking-tighter">
+                        HOKMA<span class="text-red-600 italic">TCF</span>
+                    </span>
+                    <div class="h-2 w-12 bg-red-600 rounded-full mt-2"></div>
+                </div>
+                <p class="text-slate-400 font-medium leading-relaxed">
+                    La méthode n°1 pour réussir son immigration au Canada grâce à la puissance de l'IA et des simulations réelles.
+                </p>
+                <div class="flex gap-4">
+                    <a href="#" class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center hover:bg-red-600 transition-all duration-300">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center hover:bg-red-600 transition-all duration-300">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center hover:bg-red-600 transition-all duration-300">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-lg font-black uppercase tracking-widest mb-8 text-white">Programmes</h4>
+                <ul class="space-y-4 text-slate-400 font-bold">
+                    <li><a href="#packs" class="hover:text-red-500 transition-colors">Pack Argent</a></li>
+                    <li><a href="#packs" class="hover:text-red-500 transition-colors">Pack Émeraude</a></li>
+                    <li><a href="#packs" class="hover:text-red-500 transition-colors">Pack Diamant</a></li>
+                    <li><a href="#packs" class="hover:text-red-500 transition-colors">Coaching Élite</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-lg font-black uppercase tracking-widest mb-8 text-white">Assistance</h4>
+                <ul class="space-y-4 text-slate-400 font-bold">
+                    <li class="flex items-center gap-3">
+                        <i class="fas fa-envelope text-red-500"></i>
+                        support@hokmatcf.com
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i class="fab fa-whatsapp text-emerald-500 text-xl"></i>
+                        Contact WhatsApp 24h/7
+                    </li>
+                    <li><a href="#" class="hover:text-red-500 transition-colors">F.A.Q</a></li>
+                </ul>
+            </div>
+
+            <div class="bg-white/5 p-8 rounded-[30px] border border-white/10">
+                <h4 class="text-sm font-black uppercase tracking-widest mb-6 text-white text-center">Paiement 100% Sécurisé</h4>
+                <div class="grid grid-cols-2 gap-4 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Orange-Money-logo.png" alt="Orange Money" class="h-8 object-contain">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/MTN-Logo.svg" alt="MTN MoMo" class="h-8 object-contain">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" class="h-8 object-contain">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" class="h-8 object-contain">
+                </div>
+                <p class="text-[10px] text-slate-500 mt-6 text-center font-bold uppercase tracking-tighter">Certifié SSL & Protection des données</p>
+            </div>
+        </div>
+
+        <div class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+            <p class="text-slate-500 text-sm font-bold">
+                &copy; 2026 HOKMA TCF. Tous droits réservés. 
+            </p>
+            <div class="flex gap-8 text-xs font-black uppercase tracking-widest text-slate-500">
+                <a href="#" class="hover:text-white transition-colors">Mentions Légales</a>
+                <a href="#" class="hover:text-white transition-colors">Confidentialité</a>
+            </div>
+        </div>
+    </div>
+</footer>
+    <a href="#" class="fixed bottom-8 right-8 w-16 h-16 bg-emerald-500 text-white rounded-full flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition-all z-[1000] animate-bounce">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+ <script>
+        // Navigation
+        const btn = document.getElementById('nav-trigger');
+        const overlay = document.getElementById('nav-overlay');
+        const b1 = document.getElementById('b1');
+        const b2 = document.getElementById('b2');
+        const b3 = document.getElementById('b3');
+
+        btn.addEventListener('click', () => {
+            overlay.classList.toggle('active');
+            if(overlay.classList.contains('active')) {
+                // X animation
+                b1.style.transform = 'rotate(45deg) translate(5px, 5px)';
+                b2.style.opacity = '0';
+                b3.style.transform = 'rotate(-45deg) translate(7px, -6px)';
+                b1.style.width = '100%';
+                b3.style.width = '100%';
+                document.body.style.overflow = 'hidden';
+            } else {
+                // Hamburger reset
+                b1.style.transform = 'none';
+                b2.style.opacity = '1';
+                b3.style.transform = 'none';
+                b1.style.width = '100%';
+                b3.style.width = '100%';
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                overlay.classList.remove('active');
+                b1.style.transform = 'none';
+                b2.style.opacity = '1';
+                b3.style.transform = 'none';
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+                nav.style.backdropFilter = 'blur(24px)';
+                nav.style.boxShadow = '0 10px 40px rgba(0,0,0,0.1)';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.9)';
+                nav.style.backdropFilter = 'blur(16px)';
+                nav.style.boxShadow = 'none';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        // Observe all cards
+        document.querySelectorAll('.card-hover, .group').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(40px)';
+            el.style.transition = 'all 0.8s cubic-bezier(0.23, 1, 0.320, 1)';
+            observer.observe(el);
+        });
+    </script>
+
+    <style>
+        /* Mobile Menu Animations */
+        #nav-overlay.active {
+            transform: translateY(0) !important;
+            opacity: 1 !important;
+        }
+        .mobile-link {
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        #nav-overlay.active .mobile-link {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        #nav-overlay.active .mobile-link:nth-child(1) { transition-delay: 0.1s; }
+        #nav-overlay.active .mobile-link:nth-child(2) { transition-delay: 0.2s; }
+        #nav-overlay.active .mobile-link:nth-child(3) { transition-delay: 0.3s; }
+
+        /* Ultra-responsive hero adjustments */
+        @media (max-width: 640px) {
+            .hero-mesh { padding-top: 6rem !important; padding-bottom: 4rem !important; }
+            .hero-h1 { 
+                font-size: clamp(2.5rem, 10vw, 4.5rem) !important;
+                line-height: 0.9 !important;
+                letter-spacing: -0.04em !important;
+            }
+        }
+
+        /* Prevent horizontal scroll */
+        * { 
+            -webkit-overflow-scrolling: touch; 
+            scrollbar-width: none; 
+            -ms-overflow-style: none; 
+        }
+        *::-webkit-scrollbar { display: none; }
+
+        /* Parallax effect on hero */
+        @media (prefers-reduced-motion: no-preference) {
+            .hero-mesh {
+                background-attachment: fixed;
+            }
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,72 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<section class="min-h-[80vh] flex items-center justify-center bg-white py-20 px-6">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(220,38,38,0.02)_0%,rgba(255,255,255,1)_60%)] -z-10"></div>
+
+    <div class="max-w-md w-full text-center">
+        <div class="bg-white border-2 border-slate-50 p-10 rounded-[40px] shadow-2xl shadow-slate-200/60 relative overflow-hidden">
+            
+            <div class="relative z-10">
+                <div class="mb-8">
+                    <div class="w-16 h-16 bg-slate-900 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-slate-200">
+                        <i class="fas fa-key text-white text-2xl"></i>
+                    </div>
+                    <h1 class="text-3xl font-black text-slate-900 mb-3 tracking-tight">Vérification</h1>
+                    <p class="text-slate-500 text-sm leading-relaxed px-4">
+                        Nous avons envoyé un code de sécurité à <br>
+                        <span class="text-red-600 font-bold">votre@email.com</span>
+                    </p>
+                </div>
+
+                <form action="#" method="POST" class="space-y-8">
+                    {% csrf_token %}
+                    
+                    <div class="flex justify-between gap-2 max-w-[300px] mx-auto">
+                        <input type="text" maxlength="1" class="w-14 h-16 text-center text-2xl font-black bg-slate-50 border-2 border-slate-100 rounded-2xl focus:border-red-600 focus:ring-0 outline-none transition-all text-slate-900 uppercase">
+                        <input type="text" maxlength="1" class="w-14 h-16 text-center text-2xl font-black bg-slate-50 border-2 border-slate-100 rounded-2xl focus:border-red-600 focus:ring-0 outline-none transition-all text-slate-900 uppercase">
+                        <input type="text" maxlength="1" class="w-14 h-16 text-center text-2xl font-black bg-slate-50 border-2 border-slate-100 rounded-2xl focus:border-red-600 focus:ring-0 outline-none transition-all text-slate-900 uppercase">
+                        <input type="text" maxlength="1" class="w-14 h-16 text-center text-2xl font-black bg-slate-50 border-2 border-slate-100 rounded-2xl focus:border-red-600 focus:ring-0 outline-none transition-all text-slate-900 uppercase">
+                    </div>
+
+                    <button type="submit" 
+                        class="w-full bg-red-600 text-white py-5 rounded-2xl font-bold text-lg hover:bg-slate-900 transition-all duration-300 shadow-xl shadow-red-100">
+                        Vérifier le code
+                    </button>
+                </form>
+
+                <div class="mt-8">
+                    <p class="text-sm text-slate-400 font-medium">
+                        Vous n'avez rien reçu ? <br>
+                        <button class="mt-2 text-red-600 font-black uppercase text-[11px] tracking-widest hover:underline transition-all">
+                            Renvoyer un nouveau code
+                        </button>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <p class="mt-10">
+            <a href="/login" class="text-sm font-bold text-slate-400 hover:text-slate-900 transition-colors">
+                Annuler et revenir
+            </a>
+        </p>
+    </div>
+</section>
+
+<script>
+    const inputs = document.querySelectorAll('input[type="text"]');
+    inputs.forEach((input, index) => {
+        input.addEventListener('input', () => {
+            if (input.value.length === 1 && index < inputs.length - 1) {
+                inputs[index + 1].focus();
+            }
+        });
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Backspace' && input.value.length === 0 && index > 0) {
+                inputs[index - 1].focus();
+            }
+        });
+    });
+</script>
+{% endblock %}

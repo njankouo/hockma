@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOKMA TCF | L'Excellence pour le Canada</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+        .glass { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+        .hero-mesh {
+            background: radial-gradient(at 0% 0%, rgba(254, 226, 226, 0.5) 0, transparent 50%),
+                        radial-gradient(at 100% 100%, rgba(241, 245, 249, 1) 0, transparent 50%),
+                        #ffffff;
+        }
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+        @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+        
+        /* Custom Mobile Menu */
+        #mobile-menu.active { transform: translateX(0); }
+    </style>
+</head>
+<body class="bg-[#fcfcfc] text-slate-900">
+
+    <nav class="fixed top-0 w-full z-[100] glass border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="flex items-center gap-3 group cursor-pointer">
+                <div class="bg-red-600 p-2 rounded-xl shadow-lg shadow-red-200 -rotate-3 group-hover:rotate-0 transition-all">
+                    <i class="fas fa-leaf text-white text-xl"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-black text-xl tracking-tighter leading-none">HOKMA<span class="text-red-600">TCF</span></span>
+                    <span class="text-[10px] font-bold text-slate-400 tracking-[0.2em] uppercase">Canada Edition</span>
+                </div>
+            </div>
+
+            <div class="hidden lg:flex gap-10 text-[13px] font-bold uppercase tracking-widest text-slate-500">
+                <a href="#packs" class="hover:text-red-600 transition">Programmes</a>
+                <a href="#features" class="hover:text-red-600 transition">Méthode</a>
+                <a href="#faq" class="hover:text-red-600 transition">Support</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <button class="hidden sm:block bg-slate-900 text-white px-6 py-3 rounded-2xl font-bold text-sm hover:bg-red-600 transition-all shadow-lg">
+                    Espace Client
+                </button>
+                <button id="menu-btn" class="lg:hidden text-slate-900 p-2 text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div id="mobile-menu" class="fixed inset-0 bg-slate-900 z-[110] translate-x-full transition-transform duration-300 flex flex-col p-8">
+        <button id="close-btn" class="self-end text-white text-3xl mb-12"><i class="fas fa-times"></i></button>
+        <div class="flex flex-col gap-8 text-white text-2xl font-black italic">
+            <a href="#packs" onclick="toggleMenu()">PROGRAMMES</a>
+            <a href="#features" onclick="toggleMenu()">MÉTHODE</a>
+            <a href="#faq" onclick="toggleMenu()">SUPPORT</a>
+            <button class="bg-red-600 text-white px-8 py-4 rounded-2xl text-lg">ESPACE CLIENT</button>
+        </div>
+    </div>
+
+    <header class="hero-mesh relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+            <div class="relative z-10 text-center lg:text-left">
+                <div class="inline-flex items-center gap-3 bg-red-50 border border-red-100 rounded-full px-5 py-2 mb-8">
+                    <span class="flex h-2 w-2 rounded-full bg-red-600 animate-pulse"></span>
+                    <span class="text-[10px] lg:text-[11px] font-black text-red-600 uppercase tracking-widest">Inscriptions Ouvertes - Février 2026</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-black leading-[1] tracking-tighter mb-8">
+                    Visez le <span class="text-red-600">NCLC 10</span> <br class="hidden lg:block"> sans stress.
+                </h1>
+                <p class="text-lg md:text-xl text-slate-600 mb-10 max-w-lg mx-auto lg:mx-0 leading-relaxed font-medium">
+                    HOKMA est la seule méthode qui combine <span class="text-slate-900 font-bold">intelligence artificielle</span> et <span class="text-slate-900 font-bold">simulations réelles</span>.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-5">
+                    <a href="#packs" class="bg-red-600 text-white px-10 py-5 rounded-2xl font-black text-lg hover:scale-105 transition-all shadow-2xl shadow-red-200">
+                        Commencer Maintenant
+                    </a>
+                    <div class="flex items-center justify-center gap-4 px-6 py-4 bg-white border border-slate-100 rounded-2xl shadow-sm">
+                        <div class="flex -space-x-3">
+                            <div class="w-10 h-10 rounded-full bg-blue-600 border-2 border-white flex items-center justify-center text-[10px] text-white font-bold">JB</div>
+                            <div class="w-10 h-10 rounded-full bg-red-100 border-2 border-white flex items-center justify-center text-[10px] text-red-600 font-black italic">IRCC</div>
+                        </div>
+                        <p class="text-xs font-bold text-slate-500 text-left leading-tight">Approuvé par <br><span class="text-slate-900">+15k candidats</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative grid grid-cols-2 gap-4 md:gap-6">
+                <div class="space-y-4 md:space-y-6 pt-12">
+                    <div class="bg-white p-6 md:p-8 rounded-[30px] md:rounded-[40px] shadow-2xl border border-slate-50 group hover:bg-slate-900 transition-all duration-500">
+                        <i class="fas fa-microphone-alt text-red-600 text-3xl md:text-4xl mb-6 group-hover:text-red-400"></i>
+                        <h4 class="font-black text-lg md:text-xl group-hover:text-white leading-tight">Oral Master <br><span class="text-slate-400 group-hover:text-slate-500">Simulateur</span></h4>
+                    </div>
+                    <div class="bg-red-600 p-6 md:p-8 rounded-[30px] md:rounded-[40px] text-white shadow-2xl shadow-red-200">
+                        <p class="text-4xl md:text-5xl font-black italic mb-2">98%</p>
+                        <p class="text-[10px] font-bold uppercase tracking-widest opacity-80">Réussite CLB 7+</p>
+                    </div>
+                </div>
+                <div class="space-y-4 md:space-y-6">
+                    <div class="bg-slate-900 p-6 md:p-8 rounded-[30px] md:rounded-[40px] text-white shadow-2xl">
+                        <i class="fas fa-file-pdf text-red-500 text-3xl md:text-4xl mb-6"></i>
+                        <h4 class="font-black text-lg md:text-xl leading-tight">Packs PDF <br><span class="text-slate-500 tracking-tighter uppercase text-[10px] font-bold italic underline">Auto-Download</span></h4>
+                    </div>
+                    <div class="bg-white p-6 md:p-8 rounded-[30px] md:rounded-[40px] shadow-2xl border border-slate-50 text-center">
+                        <img src="https://flagcdn.com/w160/ca.png" class="w-16 md:w-20 mx-auto rounded-lg shadow-md mb-4" alt="Canada">
+                        <p class="text-[9px] font-black uppercase text-slate-400">Normes IRCC 2026</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="bg-white border-y border-slate-100 py-12">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="text-center">
+                <p class="text-2xl md:text-4xl font-black text-slate-900">500+</p>
+                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Sujets TCF</p>
+            </div>
+            <div class="text-center border-l border-slate-100">
+                <p class="text-2xl md:text-4xl font-black text-slate-900">24/7</p>
+                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Accès IA</p>
+            </div>
+            <div class="text-center md:border-l border-slate-100">
+                <p class="text-2xl md:text-4xl font-black text-slate-900">100%</p>
+                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Audio HD</p>
+            </div>
+            <div class="text-center border-l border-slate-100">
+                <p class="text-2xl md:text-4xl font-black text-slate-900">A4</p>
+                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Print Ready</p>
+            </div>
+        </div>
+    </div>
+
+    <section id="packs" class="py-24 px-6 bg-slate-50/50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-6xl font-black tracking-tighter mb-4 italic">Nos <span class="text-red-600">Catalyseurs</span>.</h2>
+                <p class="text-slate-500 font-medium">Choisissez la puissance adaptée à votre projet.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-4">
+                
+                <div class="bg-white rounded-[35px] p-8 border border-slate-100 shadow-xl hover:-translate-y-2 transition-all flex flex-col group border-b-[10px] border-b-slate-200">
+                    <span class="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">Sprint</span>
+                    <h3 class="text-2xl font-black mt-2 uppercase italic group-hover:text-red-600 transition">Quartz</h3>
+                    <div class="text-4xl font-black my-8 tracking-tighter">25€</div>
+                    <ul class="space-y-4 mb-10 flex-grow text-sm font-bold text-slate-600">
+                        <li><i class="fas fa-check text-red-600 mr-2"></i> 3 Simulations PDF</li>
+                        <li><i class="fas fa-check text-red-600 mr-2"></i> Fiches Mémo</li>
+                    </ul>
+                    <button class="w-full py-4 rounded-xl bg-slate-100 text-slate-900 font-black text-xs uppercase hover:bg-slate-900 hover:text-white transition">Choisir Quartz</button>
+                </div>
+
+                <div class="bg-white rounded-[35px] p-8 border border-slate-100 shadow-xl hover:-translate-y-2 transition-all flex flex-col group border-b-[10px] border-b-purple-500">
+                    <span class="text-[10px] font-black text-purple-400 uppercase tracking-[0.3em]">Intensif</span>
+                    <h3 class="text-2xl font-black mt-2 uppercase italic">Améthyste</h3>
+                    <div class="text-4xl font-black my-8 tracking-tighter">45€</div>
+                    <ul class="space-y-4 mb-10 flex-grow text-sm font-bold text-slate-600">
+                        <li><i class="fas fa-check text-purple-600 mr-2"></i> 7 Simulations PDF</li>
+                        <li><i class="fas fa-check text-purple-600 mr-2"></i> 20 Modèles Écrits</li>
+                    </ul>
+                    <button class="w-full py-4 rounded-xl bg-purple-50 text-purple-700 font-black text-xs uppercase hover:bg-purple-600 hover:text-white transition">Choisir Améthyste</button>
+                </div>
+
+                <div class="bg-white rounded-[35px] p-8 border-4 border-emerald-500 shadow-2xl scale-105 z-20 flex flex-col group border-b-[12px] border-b-emerald-600 relative overflow-hidden">
+                    <div class="shimmer absolute inset-0 opacity-10 pointer-events-none"></div>
+                    <span class="bg-emerald-500 text-white text-[9px] px-3 py-1 rounded-full font-black uppercase w-max">Best Seller</span>
+                    <h3 class="text-2xl font-black mt-4 uppercase italic">Émeraude</h3>
+                    <div class="text-5xl font-black my-8 tracking-tighter text-emerald-600">75€</div>
+                    <ul class="space-y-4 mb-10 flex-grow text-sm font-black text-slate-800">
+                        <li><i class="fas fa-star text-emerald-500 mr-2"></i> 15 Simulations + Audio</li>
+                        <li><i class="fas fa-star text-emerald-500 mr-2"></i> 50 Modèles C1</li>
+                        <li><i class="fas fa-star text-emerald-500 mr-2"></i> Support VIP 24h</li>
+                    </ul>
+                    <button class="w-full py-5 rounded-xl bg-emerald-600 text-white font-black text-xs uppercase shadow-lg shadow-emerald-100">Prendre l'avantage</button>
+                </div>
+
+                <div class="bg-slate-900 rounded-[35px] p-8 shadow-2xl flex flex-col group border-b-[10px] border-b-cyan-400 text-white">
+                    <span class="text-[10px] font-black text-cyan-400 uppercase tracking-[0.3em]">Elite</span>
+                    <h3 class="text-2xl font-black mt-2 uppercase italic">Diamant</h3>
+                    <div class="text-4xl font-black my-8 tracking-tighter">120€</div>
+                    <ul class="space-y-4 mb-10 flex-grow text-sm font-bold text-slate-400">
+                        <li><i class="fas fa-gem text-cyan-400 mr-2"></i> Contenu Illimité</li>
+                        <li><i class="fas fa-gem text-cyan-400 mr-2"></i> Correction par IA</li>
+                    </ul>
+                    <button class="w-full py-4 rounded-xl bg-cyan-400 text-slate-900 font-black text-xs uppercase hover:bg-white transition">Devenir Elite</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-white pt-20 pb-10 border-t border-slate-100 text-center lg:text-left">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-3 gap-12 mb-16">
+                <div>
+                    <div class="flex items-center justify-center lg:justify-start gap-3 mb-6">
+                        <div class="bg-red-600 p-2 rounded-lg"><i class="fas fa-leaf text-white text-sm"></i></div>
+                        <span class="font-black text-xl italic">HOKMA.ca</span>
+                    </div>
+                    <p class="text-slate-500 text-sm font-medium leading-relaxed max-w-sm mx-auto lg:mx-0">
+                        Votre partenaire stratégique pour réussir le TCF Canada et l'Entrée Express.
+                    </p>
+                </div>
+                <div class="flex justify-around lg:justify-start lg:gap-20 font-bold text-sm uppercase tracking-tighter">
+                    <div class="flex flex-col gap-4">
+                        <span class="text-red-600 text-[10px] tracking-widest">Liens</span>
+                        <a href="#" class="hover:text-red-600">Packs PDF</a>
+                        <a href="#" class="hover:text-red-600">IA Test</a>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <span class="text-red-600 text-[10px] tracking-widest">Légal</span>
+                        <a href="#" class="hover:text-red-600">CGV</a>
+                        <a href="#" class="hover:text-red-600">Privacy</a>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center lg:items-end gap-6">
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 hover:bg-red-600 hover:text-white transition"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 hover:bg-red-600 hover:text-white transition"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                    <p class="text-[10px] font-black text-slate-300 tracking-[0.2em]">&copy; 2026 HOKMA TCF CANADA</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const closeBtn = document.getElementById('close-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('active');
+            mobileMenu.classList.toggle('translate-x-full');
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+        closeBtn.addEventListener('click', toggleMenu);
+    </script>
+</body>
+</html>

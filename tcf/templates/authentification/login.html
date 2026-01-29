@@ -1,0 +1,119 @@
+{% extends 'index.html' %}
+{% block content %}
+{% if messages %}
+<div id="toast-container" class="fixed top-5 right-5 z-[100] space-y-4 pointer-events-none">
+    {% for message in messages %}
+    <div class="message-toast flex items-center p-4 w-full max-w-xs rounded-[24px] border border-slate-100 shadow-2xl transition-all duration-500 transform translate-x-full pointer-events-auto
+        {% if message.tags == 'success' %} bg-white text-slate-900 {% else %} bg-red-600 text-white {% endif %}"
+        style="opacity: 0;">
+        
+        <div class="flex items-center gap-4">
+            <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-xl {% if message.tags == 'success' %} bg-green-50 text-green-600 {% else %} bg-white/20 text-white {% endif %}">
+                {% if message.tags == 'success' %}
+                <i class="fas fa-check-circle"></i>
+                {% else %}
+                <i class="fas fa-exclamation-triangle"></i>
+                {% endif %}
+            </div>
+            
+            <div class="flex flex-col">
+                <span class="text-[10px] font-black uppercase tracking-widest {% if message.tags == 'success' %} text-slate-400 {% else %} text-red-100 {% endif %}">
+                    {{ message.tags|upper }}
+                </span>
+                <p class="text-sm font-bold">{{ message }}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<script>
+    // Animation d'entrée et de sortie des toasts
+    document.addEventListener('DOMContentLoaded', () => {
+        const toasts = document.querySelectorAll('.message-toast');
+        toasts.forEach((toast, index) => {
+            // Entrée (Slide in)
+            setTimeout(() => {
+                toast.style.opacity = '1';
+                toast.style.transform = 'translateX(0)';
+            }, 100 * index);
+
+            // Sortie (Slide out après 5s)
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateX(100%)';
+                setTimeout(() => toast.remove(), 500);
+            }, 5000);
+        });
+    });
+</script>
+{% endif %}
+<section class="min-h-screen pt-32 pb-20 flex items-center justify-center bg-gradient-to-br from-slate-50 via-white to-red-50/30 relative overflow-hidden">
+    <div class="absolute top-1/4 -left-20 w-96 h-96 bg-red-100/40 rounded-full blur-[100px] -z-10"></div>
+    <div class="absolute bottom-1/4 -right-20 w-96 h-96 bg-slate-200/40 rounded-full blur-[100px] -z-10"></div>
+
+    <div class="max-w-md w-full px-6">
+        <div class="bg-white/80 backdrop-blur-2xl p-10 rounded-[40px] border border-white shadow-2xl shadow-slate-200/50 relative">
+            
+            <div class="text-center mb-10">
+                <div class="inline-flex items-center justify-center w-20 h-20 bg-red-600 rounded-[24px] shadow-xl shadow-red-500/30 mb-6 rotate-3">
+                    <i class="fas fa-user-lock text-white text-3xl"></i>
+                </div>
+                <h2 class="text-4xl font-black text-slate-900 tracking-tighter">
+                    ESPACE <span class="text-red-600">PRO</span>
+                </h2>
+                <div class="h-2 w-16 bg-red-600 rounded-full mx-auto mt-2"></div>
+                <p class="text-slate-500 font-bold mt-4 uppercase text-[10px] tracking-widest">Accédez à votre préparation Canada</p>
+            </div>
+
+            <form action="{%url 'authentification'%}" method="POST" class="space-y-6">
+                {% csrf_token %}
+                <div class="space-y-2">
+                    <label class="text-xs font-black uppercase tracking-widest text-slate-700 ml-2">Email de l'élève</label>
+                    <div class="relative">
+                        <i class="fas fa-envelope absolute left-5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                        <input type="email" placeholder="votre@email.com" required name='email'
+                            class="w-full pl-14 pr-6 py-5 bg-slate-100/50 border-2 border-transparent focus:border-red-600 focus:bg-white rounded-2xl outline-none font-bold transition-all">
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <div class="flex justify-between items-center px-2">
+                        <label class="text-xs font-black uppercase tracking-widest text-slate-700">Mot de passe</label>
+                        <a href="{%url 'forgot-password'%}" class="text-[10px] font-black uppercase text-red-600 hover:underline">Oublié ?</a>
+                    </div>
+                    <div class="relative">
+                        <i class="fas fa-lock absolute left-5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                        <input type="password" placeholder="••••••••" required name='password'
+                            class="w-full pl-14 pr-6 py-5 bg-slate-100/50 border-2 border-transparent focus:border-red-600 focus:bg-white rounded-2xl outline-none font-bold transition-all">
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3 px-2">
+                    <input type="checkbox" id="remember" class="w-5 h-5 rounded-lg border-2 border-slate-300 text-red-600 focus:ring-red-600">
+                    <label for="remember" class="text-xs font-bold text-slate-600 cursor-pointer">Rester connecté</label>
+                </div>
+
+                <button type="submit" 
+                    class="w-full py-5 bg-slate-900 text-white rounded-2xl font-black text-lg hover:bg-red-600 hover:shadow-2xl hover:shadow-red-500/40 transition-all duration-300 transform active:scale-95">
+                    Se Connecter <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+            </form>
+
+            <div class="mt-10 text-center">
+                <p class="text-sm font-bold text-slate-500">
+                    Pas encore de compte ? <br>
+                    <a href="{% url 'register' %}" class="text-red-600 font-black hover:underline uppercase text-xs tracking-wider">Choisir un programme ici</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="mt-8 text-center">
+            <a href="/" class="text-slate-400 hover:text-slate-900 font-bold text-sm transition-colors">
+                <i class="fas fa-chevron-left mr-2"></i> Retour à l'accueil
+            </a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
